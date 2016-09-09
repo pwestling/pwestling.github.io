@@ -136,8 +136,9 @@
                           break;
                         }
                       }
-
+                    console.log("Hide based on this matcher: "+hideThisMatcher)
                     hide = hide | hideThisMatcher;
+                    console.log("Should hide? "+hide)
 
                   }
 

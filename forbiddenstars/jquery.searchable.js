@@ -146,7 +146,7 @@
 
         getMatcherFunction: function( type ) {
             if ( type === 'fuzzy' ) {
-                return this.getFuzzyMatcher;
+                return this.getFuzzyMatchers;
             } else if ( type === 'strict' ) {
                 return this.getStrictMatcher;
             }

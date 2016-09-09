@@ -128,13 +128,16 @@
 
                 for (z = 0; z < matcherCount; z++){  
                 matcher = matchers[z];
+                hideThisMatcher = true
                 for ( x = 0; x < childCount; x++ ) {
                     if ( matcher( $( children[ x ] ).text() ) ) {
-                    } else{
-                        hide = true;
+                        hideThisMatcher = false;
                         break;
                     }
                 }
+
+                hide = hide | hideThisMatcher
+
                 }
 
                 if ( hide === true ) {

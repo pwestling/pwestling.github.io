@@ -129,7 +129,8 @@
                 for (z = 0; z < matcherCount; z++){  
                 matcher = matchers[z];
                 for ( x = 0; x < childCount; x++ ) {
-                    if ( !matcher( $( children[ x ] ).text() ) ) {
+                    if ( matcher( $( children[ x ] ).text() ) ) {
+                    } else{
                         hide = true;
                         break;
                     }
@@ -148,10 +149,10 @@
             if ( type === 'fuzzy' ) {
                 return this.getFuzzyMatchers;
             } else if ( type === 'strict' ) {
-                return this.getStrictMatcher;
+                return this.getStrictMatchers;
             }
 
-            return this.getDefaultMatcher;
+            return this.getDefaultMatchers;
         },
 
         getFuzzyMatchers: function( term ) {
@@ -172,6 +173,11 @@
             };
         },
 
+        getStrictMatchers: function( term ) {
+            term = $.trim( term );
+            terms = term.split(' ');
+            return terms.filter(function (a) { return a.length > 0 }).map(this.getStrictMatcher);
+        },
         getStrictMatcher: function( term ) {
             term = $.trim( term );
 
@@ -180,6 +186,12 @@
             };
         },
 
+        getDefaultMatcher: function( term ) {
+            term = $.trim( term ).toLowerCase();
+
+            terms = term.split(' ');
+            return terms.filter(function (a) { return a.length > 0 }).map(this.getDefaultMatcher);
+        }
         getDefaultMatcher: function( term ) {
             term = $.trim( term ).toLowerCase();
 

@@ -131,6 +131,7 @@
                     hideThisMatcher = true;
                       for ( x = 0; x < childCount; x++ ) {
                         if ( matcher( $( children[ x ] ).text() ) ) {
+                          console.log("Matched");
                           hideThisMatcher = false;
                           break;
                         }
@@ -199,7 +200,8 @@
             term = $.trim( term ).toLowerCase();
 
             return function( s ) {
-                console.log(s +" : "+term);
+                result = s.toLowerCase().indexOf( term ) !== -1
+                console.log(s.toLowerCae() +" : "+term+" : "+result);
                 return ( s.toLowerCase().indexOf( term ) !== -1 );
             };
         }

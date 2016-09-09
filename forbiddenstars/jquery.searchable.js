@@ -191,7 +191,7 @@
 
             terms = term.split(' ');
             return terms.filter(function (a) { return a.length > 0 }).map(this.getDefaultMatcher);
-        }
+        },
         getDefaultMatcher: function( term ) {
             term = $.trim( term ).toLowerCase();
 

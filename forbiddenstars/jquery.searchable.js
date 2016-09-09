@@ -116,7 +116,7 @@
             }
 
             elemCount = this.$searchElems.length;
-            matcher   = this.matcherFunc( term );
+            matchers   = this.matcherFunc( term );
 
             for ( i = 0; i < elemCount; i++ ) {
                 $elem      = $( this.$searchElems[ i ] );
@@ -124,11 +124,16 @@
                 childCount = children.length;
                 hide       = true;
 
+                matcherCount = matchers.length
+
+                for (z = 0; z < matcherCount; z++){  
+                matcher = matchers[z];
                 for ( x = 0; x < childCount; x++ ) {
                     if ( matcher( $( children[ x ] ).text() ) ) {
                         hide = false;
                         break;
                     }
+                }
                 }
 
                 if ( hide === true ) {
@@ -149,6 +154,10 @@
             return this.getDefaultMatcher;
         },
 
+        getFuzzyMatchers: function( term ) {
+            terms = term.split(' ');
+            return terms.map(this.getFuzzyMatcher)
+        }
         getFuzzyMatcher: function( term ) {
             var regexMatcher,
                 pattern = term.split( '' ).reduce( function( a, b ) {

@@ -199,6 +199,7 @@
             term = $.trim( term ).toLowerCase();
 
             return function( s ) {
+                console.log(s +" : "+term);
                 return ( s.toLowerCase().indexOf( term ) !== -1 );
             };
         }

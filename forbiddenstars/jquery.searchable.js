@@ -156,7 +156,7 @@
 
         getFuzzyMatchers: function( term ) {
             terms = term.split(' ');
-            return terms.map(this.getFuzzyMatcher)
+            return terms.map(this.getFuzzyMatcher);
         }
         getFuzzyMatcher: function( term ) {
             var regexMatcher,

@@ -9,9 +9,21 @@
   </form>
 
   <table id="img-gallery">
-    <tr class="row">
-      <td class="column"><img src="hit-and-run.jpg" alt="hit and run, eldar"></td>
-      <td class="column"><img src="howling-banshees.jpg" alt="howling banshees, eldar"></td>
+    <th>
+      <td>Faction</td>
+      <td>Card Name</td>
+      <td>Card Image</td>
+    </th>
+    
+    <tr>
+      <td>Eldar</td>
+      <td>Hit And Run</td>
+      <td><img src="hit-and-run.jpg" alt="hit and run"></td>
+    </tr>
+    <tr>
+      <td>Eldar</td>
+      <td>howling Banshees</td>
+      <td><img src="howling-banshees.jpg" alt="howling banshees"></td>
     </tr>
   </table>
 
@@ -21,8 +33,6 @@
 
   <script type="text/javascript">
     $( '#img-gallery' ).searchable({
-      selector      : '.row',
-      childSelector : '.column',
       searchField   : '#search-term',
       striped       : true,
       oddRow        : { 'background-color': '#f5f5f5' },

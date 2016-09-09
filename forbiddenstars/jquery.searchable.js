@@ -201,7 +201,7 @@
 
             return function( s ) {
                 result = s.toLowerCase().indexOf( term ) !== -1
-                console.log(s.toLowerCae() +" : "+term+" : "+result);
+                console.log(s.toLowerCase() +" : "+term+" : "+result);
                 return ( s.toLowerCase().indexOf( term ) !== -1 );
             };
         }

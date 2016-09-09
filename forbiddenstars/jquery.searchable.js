@@ -189,7 +189,7 @@
             };
         },
 
-        getDefaultMatcher: function( term ) {
+        getDefaultMatchers: function( term ) {
             term = $.trim( term ).toLowerCase();
 
             terms = term.split(' ');

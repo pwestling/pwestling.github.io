@@ -126,24 +126,24 @@
 
                 matcherCount = matchers.length
 
-                for (z = 0; z < matcherCount; z++){  
-                matcher = matchers[z];
-                hideThisMatcher = true
-                for ( x = 0; x < childCount; x++ ) {
-                    if ( matcher( $( children[ x ] ).text() ) ) {
-                        hideThisMatcher = false;
-                        break;
-                    }
-                }
+                  for (z = 0; z < matcherCount; z++){  
+                    matcher = matchers[z];
+                    hideThisMatcher = true;
+                      for ( x = 0; x < childCount; x++ ) {
+                        if ( matcher( $( children[ x ] ).text() ) ) {
+                          hideThisMatcher = false;
+                          break;
+                        }
+                      }
 
-                hide = hide | hideThisMatcher
+                    hide = hide | hideThisMatcher;
 
-                }
+                  }
 
                 if ( hide === true ) {
-                    this.settings.hide( $elem );
+                  this.settings.hide( $elem );
                 } else {
-                    this.settings.show( $elem );
+                  this.settings.show( $elem );
                 }
             }
         },

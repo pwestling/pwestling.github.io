@@ -1,0 +1,29 @@
+
+<body>
+
+  <form id="search-term">
+    <div class="input-group">
+      <input type="text" placeholder="Enter your search term(s) here">
+      <button type="submit">Search</button>
+    </div>
+  </form>
+
+  <div class="search-overview">
+    <p>Your search:</p>
+    <span class="no-tags">No tags yet</span>
+    <span class="no-results">No search results</span>
+    <span class="tags"></span>
+  </div>
+
+  <div id="img-gallery">
+    <img src="hit-and-run.jpg" alt="hit and run, eldar">
+  </div>
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="jQuery.search-gallery-plugin.js"></script>
+
+  <script type="text/javascript">
+    $('#image-gallery').searchGallery();
+  </script>
+</body>

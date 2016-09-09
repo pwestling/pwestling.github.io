@@ -122,15 +122,15 @@
                 $elem      = $( this.$searchElems[ i ] );
                 children   = $elem.find( this.settings.childSelector );
                 childCount = children.length;
-                hide       = true;
+                hide       = false;
 
                 matcherCount = matchers.length
 
                 for (z = 0; z < matcherCount; z++){  
                 matcher = matchers[z];
                 for ( x = 0; x < childCount; x++ ) {
-                    if ( matcher( $( children[ x ] ).text() ) ) {
-                        hide = false;
+                    if ( !matcher( $( children[ x ] ).text() ) ) {
+                        hide = true;
                         break;
                     }
                 }

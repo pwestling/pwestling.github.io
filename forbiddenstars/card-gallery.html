@@ -9,9 +9,9 @@
   </form>
 
   <table id="img-gallery">
-    <tr>
-      <td><img src="hit-and-run.jpg" alt="hit and run, eldar"></td>
-      <td><img src="howling-banshees.jpg" alt="howling banshees, eldar"></td>
+    <tr class="row">
+      <td class="column"><img src="hit-and-run.jpg" alt="hit and run, eldar"></td>
+      <td class="column"><img src="howling-banshees.jpg" alt="howling banshees, eldar"></td>
     </tr>
   </table>
 
@@ -20,7 +20,7 @@
   <script src="jQuery.search-gallery-plugin.js"></script>
 
   <script type="text/javascript">
-    $( '#element' ).searchable({
+    $( '#img-gallery' ).searchable({
       selector      : '.row',
       childSelector : '.column',
       searchField   : '#search-term',

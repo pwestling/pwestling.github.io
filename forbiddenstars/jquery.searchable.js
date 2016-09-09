@@ -131,14 +131,11 @@
                     hideThisMatcher = true;
                       for ( x = 0; x < childCount; x++ ) {
                         if ( matcher( $( children[ x ] ).text() ) ) {
-                          console.log("Matched");
                           hideThisMatcher = false;
                           break;
                         }
                       }
-                    console.log("Hide based on this matcher: "+hideThisMatcher)
                     hide = hide || hideThisMatcher;
-                    console.log("Should hide? "+hide)
 
                   }
 
@@ -201,8 +198,6 @@
             term = $.trim( term ).toLowerCase();
 
             return function( s ) {
-                result = s.toLowerCase().indexOf( term ) !== -1
-                console.log(s.toLowerCase() +" : "+term+" : "+result);
                 return ( s.toLowerCase().indexOf( term ) !== -1 );
             };
         }

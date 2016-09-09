@@ -157,7 +157,8 @@
         getFuzzyMatchers: function( term ) {
             terms = term.split(' ');
             return terms.map(this.getFuzzyMatcher);
-        }
+        },
+
         getFuzzyMatcher: function( term ) {
             var regexMatcher,
                 pattern = term.split( '' ).reduce( function( a, b ) {

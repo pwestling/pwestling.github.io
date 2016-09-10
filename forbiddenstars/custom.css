@@ -1,4 +1,6 @@
 .card:hover {
+  width:292px;
+  height:500px;
   -webkit-transform: scale(2); 
   -moz-transform: scale(2);
   -o-transform: scale(2);

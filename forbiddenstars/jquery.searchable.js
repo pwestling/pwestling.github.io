@@ -130,7 +130,8 @@
                     matcher = matchers[z];
                     hideThisMatcher = true;
                       for ( x = 0; x < childCount; x++ ) {
-                        if ( matcher( $( children[ x ] ).text() ) ) {
+                        if ( matcher( $( children[ x ] ).text() ) ||
+                             matcher( $( children[ x ] ).attr("alt") ) {
                           hideThisMatcher = false;
                           break;
                         }

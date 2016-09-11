@@ -132,7 +132,7 @@
                       for ( x = 0; x < childCount; x++ ) {
                         el = $(children[x])
                         if ( matcher(el.text()) ||
-                             (el.is("[alt]") && matcher(el.attr("alt")))) {
+                             (el.is("[tag]") && matcher(el.attr("tag")))) {
                           hideThisMatcher = false;
                           break;
                         }

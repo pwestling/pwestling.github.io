@@ -14,7 +14,7 @@
   </style>
 </head>
 <body>
-  Click an image to zoom
+  <h3>Click an image to zoom</h3>
   <div id="gallery"></div>
 
   <div id="overlay" onclick="this.classList.remove('show')">
@@ -22,9 +22,16 @@
   </div>
 
   <script type="text/javascript" defer>
+    function shuffle(arr) {
+  for (let i = arr.length; i; i--) {
+    const j = Math.floor(Math.random() * i);
+    [arr[i - 1], arr[j]] = [arr[j], arr[i - 1]];
+  }
+  return arr;
+}
     // Add image URLs to display, e.g.
     // const urls = ["https://example.com/foo.jpg", ...]
-    const urls = [
+    const urls_ordered = [
 "https://live.staticflickr.com/65535/54570449858_46c8c7ab12_b.jpg",
 "https://live.staticflickr.com/65535/54570448528_6c1e5dcd0f_b.jpg",
 "https://live.staticflickr.com/65535/54570407139_79841e4a74_b.jpg",
@@ -100,7 +107,7 @@
 "https://live.staticflickr.com/65535/54570553980_fedbe95ff5_b.jpg",
 "https://live.staticflickr.com/65535/54570555640_103c1fa0ee_b.jpg"
 ]
-
+    const urls = shuffle(urls_ordered);
     const gallery   = document.getElementById('gallery');
     const overlay   = document.getElementById('overlay');
     const overlayImg= overlay.querySelector('img');

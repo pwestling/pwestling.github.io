@@ -1,0 +1,124 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>500 px Square Gallery</title>
+  <style>
+    body{margin:0;font-family:sans-serif}
+    #gallery{display:flex;flex-wrap:wrap;gap:8px;padding:8px}
+    .thumb{width:500px;height:500px;display:flex;align-items:center;justify-content:center;box-sizing:border-box;border:1px solid #ccc;cursor:pointer}
+    .thumb img{max-width:100%;max-height:100%;object-fit:contain}
+    #overlay{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.9);visibility:hidden;z-index:999}
+    #overlay.show{visibility:visible}
+    #overlay img{max-width:90vw;max-height:90vh;object-fit:contain}
+  </style>
+</head>
+<body>
+  <div id="gallery"></div>
+
+  <div id="overlay" onclick="this.classList.remove('show')">
+    <img>
+  </div>
+
+  <script type="text/javascript" defer>
+    // Add image URLs to display, e.g.
+    // const urls = ["https://example.com/foo.jpg", ...]
+    const urls = [
+"https://live.staticflickr.com/65535/54570449858_46c8c7ab12_b.jpg",
+"https://live.staticflickr.com/65535/54570448528_6c1e5dcd0f_b.jpg",
+"https://live.staticflickr.com/65535/54570407139_79841e4a74_b.jpg",
+"https://live.staticflickr.com/65535/54570223041_db7352a590_b.jpg",
+"https://live.staticflickr.com/65535/54570448083_540d678a39_b.jpg",
+"https://live.staticflickr.com/65535/54570404469_c72f9c1347_b.jpg",
+"https://live.staticflickr.com/65535/54570406314_b4cdb467bf_b.jpg",
+"https://live.staticflickr.com/65535/54569359672_f12c0ac5cf_b.jpg",
+"https://live.staticflickr.com/65535/54569357537_d55dfebb50_b.jpg",
+"https://live.staticflickr.com/65535/54570552775_c9d2066c16_b.jpg",
+"https://live.staticflickr.com/65535/54570223371_d280b4e51b_b.jpg",
+"https://live.staticflickr.com/65535/54570225366_a26bb971c1_b.jpg",
+"https://live.staticflickr.com/65535/54570450813_ce982a5314_b.jpg",
+"https://live.staticflickr.com/65535/54569355872_ac6b77c60c_b.jpg",
+"https://live.staticflickr.com/65535/54570408169_ceab03206c_b.jpg",
+"https://live.staticflickr.com/65535/54570552915_fc563d0ec1_b.jpg",
+"https://live.staticflickr.com/65535/54570206981_6dc7583298_b.jpg",
+"https://live.staticflickr.com/65535/54570388894_b4253d0228_b.jpg",
+"https://live.staticflickr.com/65535/54569339027_e69f89e7bd_b.jpg",
+"https://live.staticflickr.com/65535/54570388754_189e91b6b3_b.jpg",
+"https://live.staticflickr.com/65535/54570451878_6ddfd0cd5c_b.jpg",
+"https://live.staticflickr.com/65535/54570553225_d77dfc3cff_b.jpg",
+"https://live.staticflickr.com/65535/54570222751_681ec5eebe_b.jpg",
+"https://live.staticflickr.com/65535/54570224906_a142d696c3_b.jpg",
+"https://live.staticflickr.com/65535/54570406139_752b38575f_b.jpg",
+"https://live.staticflickr.com/65535/54570225391_92f2f9e6b0_b.jpg",
+"https://live.staticflickr.com/65535/54570221896_967a2966a8_b.jpg",
+"https://live.staticflickr.com/65535/54570389434_5c10a85e76_b.jpg",
+"https://live.staticflickr.com/65535/54570206611_cf9767e79f_b.jpg",
+"https://live.staticflickr.com/65535/54570207021_8949a8f31d_b.jpg",
+"https://live.staticflickr.com/65535/54570221381_a33ea34b6a_b.jpg",
+"https://live.staticflickr.com/65535/54570447518_a4a93e7ce3_b.jpg",
+"https://live.staticflickr.com/65535/54569357402_c5dbbb722b_b.jpg",
+"https://live.staticflickr.com/65535/54570451793_b2afa570e8_b.jpg",
+"https://live.staticflickr.com/65535/54570450168_dee992e35d_b.jpg",
+"https://live.staticflickr.com/65535/54570447338_3777d31022_b.jpg",
+"https://live.staticflickr.com/65535/54570449843_d07fafd416_b.jpg",
+"https://live.staticflickr.com/65535/54570431813_1c0aeb26ba_b.jpg",
+"https://live.staticflickr.com/65535/54570535530_ca7443d4d2_b.jpg",
+"https://live.staticflickr.com/65535/54570406774_39aeb15349_b.jpg",
+"https://live.staticflickr.com/65535/54570225046_ae8b39e2cd_b.jpg",
+"https://live.staticflickr.com/65535/54570225316_0601904a17_b.jpg",
+"https://live.staticflickr.com/65535/54570222466_e4faffde6b_b.jpg",
+"https://live.staticflickr.com/65535/54570555500_558a1f1568_b.jpg",
+"https://live.staticflickr.com/65535/54570405889_56c08f1d5d_b.jpg",
+"https://live.staticflickr.com/65535/54570206716_2a72cac1bd_b.jpg",
+"https://live.staticflickr.com/65535/54570537145_3772f70642_b.jpg",
+"https://live.staticflickr.com/65535/54570387809_a077e151ca_b.jpg",
+"https://live.staticflickr.com/65535/54570406629_18d7f01f3d_b.jpg",
+"https://live.staticflickr.com/65535/54570555415_92c213cf87_b.jpg",
+"https://live.staticflickr.com/65535/54570553085_aeb3106ca9_b.jpg",
+"https://live.staticflickr.com/65535/54570551795_f192f2f026_b.jpg",
+"https://live.staticflickr.com/65535/54570450738_e9b56ecda7_b.jpg",
+"https://live.staticflickr.com/65535/54570431268_8cbf0ab47b_b.jpg",
+"https://live.staticflickr.com/65535/54570223106_99cb070b6b_b.jpg",
+"https://live.staticflickr.com/65535/54570450668_3ae327c3d7_b.jpg",
+"https://live.staticflickr.com/65535/54570433088_836a3ba898_b.jpg",
+"https://live.staticflickr.com/65535/54570555670_eb54395951_b.jpg",
+"https://live.staticflickr.com/65535/54570389569_5dd2fd92ed_b.jpg",
+"https://live.staticflickr.com/65535/54570451203_a312b899db_b.jpg",
+"https://live.staticflickr.com/65535/54569359447_23384fb978_b.jpg",
+"https://live.staticflickr.com/65535/54570449373_cbd0c4e633_b.jpg",
+"https://live.staticflickr.com/65535/54569357997_bb04f8555c_b.jpg",
+"https://live.staticflickr.com/65535/54570389404_59648e52c2_b.jpg",
+"https://live.staticflickr.com/65535/54570390449_c7097c7ff0_b.jpg",
+"https://live.staticflickr.com/65535/54569355842_ffe0562ea4_b.jpg",
+"https://live.staticflickr.com/65535/54569355382_63a3e9fd2c_b.jpg",
+"https://live.staticflickr.com/65535/54570431868_086384a3c3_b.jpg",
+"https://live.staticflickr.com/65535/54570451043_354fcc64c4_b.jpg",
+"https://live.staticflickr.com/65535/54569358962_ffe9f8684a_b.jpg",
+"https://live.staticflickr.com/65535/54570404274_0f9580cb6f_b.jpg",
+"https://live.staticflickr.com/65535/54570221296_22df3b98b9_b.jpg",
+"https://live.staticflickr.com/65535/54570553980_fedbe95ff5_b.jpg",
+"https://live.staticflickr.com/65535/54570555640_103c1fa0ee_b.jpg"
+]
+
+    const gallery   = document.getElementById('gallery');
+    const overlay   = document.getElementById('overlay');
+    const overlayImg= overlay.querySelector('img');
+
+    urls.forEach(src => {
+      const box = document.createElement('div');
+      box.className = 'thumb';
+
+      const img = document.createElement('img');
+      img.src = src;
+
+      box.appendChild(img);
+      box.onclick = () => {
+        overlayImg.src = src;
+        overlay.classList.add('show');
+      };
+
+      gallery.appendChild(box);
+    });
+  </script>
+</body>
+</html>

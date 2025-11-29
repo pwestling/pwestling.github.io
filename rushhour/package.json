@@ -1,0 +1,26 @@
+{
+  "name": "traffic",
+  "module": "index.tsx",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "test": "bun test",
+    "typecheck": "bun x tsc --noEmit",
+    "generate:puzzles": "bun run generate-puzzles-from-rush.ts",
+    "dev:web": "bun --hot server.ts",
+    "build:web": "bun build index.html --outdir ./dist --minify --target browser"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "ink": "^6.5.1",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  }
+}
